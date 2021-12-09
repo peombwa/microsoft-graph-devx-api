@@ -15,6 +15,7 @@ namespace CodeSnippetsReflection.OpenAPI.LanguageGenerators
     {
         private const string requestBodyVarName = "params";
         private const string modulePrefix = "Microsoft.Graph";
+        private const string projName = "CodeSnippetsReflection";
         private const string psRepoName = "msgraph-sdk-powershell";
         private const string mgCommandMetadataRelativePath = @"src\Authentication\Authentication\custom\common\MgCommandMetadata.json";
         private readonly IList<PowerShellCommandInfo> psCommands = default;
@@ -22,7 +23,6 @@ namespace CodeSnippetsReflection.OpenAPI.LanguageGenerators
         {
             if (psCommands == default)
             {
-                string projName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
                 string baseDir = AppContext.BaseDirectory;
                 string repoPath = baseDir.Remove(baseDir.IndexOf(projName));
                 string mgCommandMetadataPath = Path.Join(repoPath, psRepoName, mgCommandMetadataRelativePath);
