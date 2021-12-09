@@ -18,6 +18,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  msGraphPowerShellName: 'msgraph-sdk-powershell'
 
 steps:
 - checkout: self
@@ -42,7 +43,7 @@ steps:
     command: test
     projects: |
       **/*Test/*.csproj
-      !**/*/Microsoft.Graph.Authentication.Test.csproj
+      !$(Build.SourcesDirectory)/$(msGraphPowerShellName)/**/*Test/*.csproj
     arguments: '--configuration $(buildConfiguration) --collect "Code Coverage" --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
 
 - task: PublishTestResults@2
