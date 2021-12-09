@@ -42,7 +42,7 @@ steps:
     command: test
     projects: |
       **/*Test/*.csproj
-      !**/Authentication.Test.csproj
+      !**/*/Microsoft.Graph.Authentication.Test.csproj
     arguments: '--configuration $(buildConfiguration) --collect "Code Coverage" --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
 
 - task: PublishTestResults@2
